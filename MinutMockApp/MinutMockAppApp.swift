@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct MinutMockAppApp: App {
     let persistenceController = PersistenceController.shared
+    @Environment(\.managedObjectContext) var managedObjectContext
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .preferredColorScheme(.dark)
+                
         }
     }
 }
